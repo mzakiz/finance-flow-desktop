@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { MainLayout } from '@/components/MainLayout';
 import { Steps } from '@/components/Steps';
@@ -14,8 +13,6 @@ import { useToast } from '@/hooks/use-toast';
 
 import {
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
@@ -203,7 +200,13 @@ const FinancingTermsPage = () => {
                   </h3>
                   
                   <div className="h-[200px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ChartContainer
+                      config={{
+                        principal: { label: "Principal", color: "#00D4B0" },
+                        profit: { label: "Profit", color: "#6246EA" },
+                        adminfee: { label: "Admin Fee", color: "#3B82F6" },
+                      }}
+                    >
                       <PieChart>
                         <Pie
                           data={chartData}
@@ -223,18 +226,7 @@ const FinancingTermsPage = () => {
                         </Pie>
                         <ChartTooltip content={<ChartTooltipContent />} />
                       </PieChart>
-                    </ResponsiveContainer>
-                    <div className="mt-4 flex justify-center gap-4">
-                      {chartData.map((entry, index) => (
-                        <div key={`legend-${index}`} className="flex items-center gap-2">
-                          <div 
-                            className="w-3 h-3 rounded-sm" 
-                            style={{ backgroundColor: entry.color }}
-                          />
-                          <span className="text-xs">{entry.name}</span>
-                        </div>
-                      ))}
-                    </div>
+                    </ChartContainer>
                   </div>
                 </div>
                 
