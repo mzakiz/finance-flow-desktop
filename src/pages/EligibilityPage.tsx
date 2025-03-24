@@ -79,7 +79,7 @@ const EligibilityPage = () => {
             
             <div className="mt-10 text-center">
               <button 
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate('/application-start')}
                 className="btn-primary inline-flex items-center gap-2"
               >
                 Apply Now

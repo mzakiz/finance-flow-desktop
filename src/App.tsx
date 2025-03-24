@@ -11,6 +11,12 @@ import TermsPage from "./pages/TermsPage";
 import VerificationPage from "./pages/VerificationPage";
 import EligibilityPage from "./pages/EligibilityPage";
 import Dashboard from "./pages/Dashboard";
+import ApplicationStartPage from "./pages/ApplicationStartPage";
+import BankDetailsPage from "./pages/BankDetailsPage";
+import FinancingTermsPage from "./pages/FinancingTermsPage";
+import ApplicationSummaryPage from "./pages/ApplicationSummaryPage";
+import ApplicationConfirmationPage from "./pages/ApplicationConfirmationPage";
+import ApplicationTrackingPage from "./pages/ApplicationTrackingPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +33,12 @@ const App = () => (
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/eligibility" element={<EligibilityPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/application-start" element={<ApplicationStartPage />} />
+          <Route path="/bank-details" element={<BankDetailsPage />} />
+          <Route path="/financing-terms" element={<FinancingTermsPage />} />
+          <Route path="/application-summary" element={<ApplicationSummaryPage />} />
+          <Route path="/application-confirmation" element={<ApplicationConfirmationPage />} />
+          <Route path="/application-tracking" element={<ApplicationTrackingPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
