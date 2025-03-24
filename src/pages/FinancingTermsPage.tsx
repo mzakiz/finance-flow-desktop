@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { MainLayout } from '@/components/MainLayout';
 import { Steps } from '@/components/Steps';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Calculator, Calendar, Info, DollarSign, PieChart } from 'lucide-react';
+import { ArrowRight, Calculator, Calendar, Info, DollarSign, PieChartIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
@@ -198,18 +198,12 @@ const FinancingTermsPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <div className="bg-white p-5 rounded-lg border border-border">
                   <h3 className="text-base font-medium mb-4 flex items-center gap-2">
-                    <PieChart size={18} className="text-brand-teal" />
+                    <PieChartIcon size={18} className="text-brand-teal" />
                     Financing Breakdown
                   </h3>
                   
                   <div className="h-[200px] w-full">
-                    <ChartContainer
-                      config={{
-                        principal: { label: "Principal", color: "#00D4B0" },
-                        profit: { label: "Profit", color: "#6246EA" },
-                        adminfee: { label: "Admin Fee", color: "#3B82F6" },
-                      }}
-                    >
+                    <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
                           data={chartData}
@@ -229,8 +223,18 @@ const FinancingTermsPage = () => {
                         </Pie>
                         <ChartTooltip content={<ChartTooltipContent />} />
                       </PieChart>
-                      <ChartLegend content={<ChartLegendContent />} />
-                    </ChartContainer>
+                    </ResponsiveContainer>
+                    <div className="mt-4 flex justify-center gap-4">
+                      {chartData.map((entry, index) => (
+                        <div key={`legend-${index}`} className="flex items-center gap-2">
+                          <div 
+                            className="w-3 h-3 rounded-sm" 
+                            style={{ backgroundColor: entry.color }}
+                          />
+                          <span className="text-xs">{entry.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 
